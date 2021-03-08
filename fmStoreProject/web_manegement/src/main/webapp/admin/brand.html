@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>品牌管理</title>
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../plugins/adminLTE/css/AdminLTE.css">
+    <link rel="stylesheet" href="../plugins/adminLTE/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../plugins/pageination/zpageNav.css">
+	<script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body class="hold-transition skin-red sidebar-mini">
+<div id="app">
+	<div class="box-header with-border" style="height: 64.5px;line-height: 54px;">
+		<h3 class="box-title">品牌管理</h3>
+	</div>
+	<div class="box-body">
+		<!-- 数据表格 -->
+		<div class="table-box">
+			<!--工具栏-->
+			<div class="pull-left">
+				<div class="form-group form-inline">
+					<div class="btn-group">
+						<button type="button" class="btn btn-default" title="新建" data-toggle="modal" data-target="#editModal" ><i class="fa fa-file-o"></i> 新建</button>
+						<button type="button" class="btn btn-default" title="删除" @click="deleteBrand()"><i class="fa fa-trash-o"></i> 删除</button>
+						<button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
+					</div>
+					<div class="box-tools pull-right">
+						<div class="has-feedback" style="margin-left: 850px; font-size: 16px">
+							品牌名称: <input type="text" class="form-control" v-model="searchBrand.name">
+							品牌首字母: <input type="text" class="form-control" v-model="searchBrand.firstChar">
+							<input class="btn btn-default" type="button" @click="pageHandler(1)" value="查询">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="box-tools pull-right">
+				<div class="has-feedback"></div>
+			</div>
+			<!--数据列表-->
+			<table id="dataList" class="table table-bordered table-striped table-hover dataTable">
+				<thead>
+				<tr>
+					<th class="" style="padding-right:0px">
+						<input id="selall" type="checkbox" class="icheckbox_square-blue">
+					</th>
+					<th class="sorting_asc">品牌ID</th>
+					<th class="sorting">品牌名称</th>
+					<th class="sorting">品牌首字母</th>
+					<th class="text-center">操作</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr v-for="brandItem in brandList">
+					<td><input  type="checkbox" @click="deleteSelection($event,brandItem.id)"></td>
+					<td>{{brandItem.id}}</td>
+					<td>{{brandItem.name}}</td>
+					<td>{{brandItem.firstChar}}</td>
+					<td class="text-center">
+						<button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal" @click="findById(brandItem.id)" >修改</button>
+					</td>
+				</tr>
+
+				</tbody>
+			</table>
+			<!--分页-->
+			<zpagenav v-bind:page="page" v-bind:page-size="pageSize" v-bind:total="total"
+					  v-bind:max-page="maxPage"  v-on:pagehandler="pageHandler">
+			</zpagenav>
+		</div>
+	</div>
+
+	<!-- 编辑窗口 -->
+	<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" >
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h3 id="myModalLabel">品牌编辑</h3>
+				</div>
+				<div class="modal-body">
+					<table class="table table-bordered table-striped"  width="800px">
+						<tr>
+							<td>品牌名称</td>
+							<td><input  class="form-control" placeholder="品牌名称" v-model="brand.name">  </td>
+						</tr>
+						<tr>
+							<td>首字母</td>
+							<td><input  class="form-control" placeholder="首字母" v-model="brand.firstChar">  </td>
+						</tr>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-success" data-dismiss="modal" aria-hidden="true" @click="brandSave()">保存</button>
+					<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+</body>
+
+<script src="../plugins/vue/vuejs-2.5.16.js"></script>
+<script src="../plugins/vue/axios-0.18.0.js"></script>
+<script src="../plugins/vue/qs.js"></script>
+<script type="text/javascript" src="../plugins/pageination/zpageNav.js"></script>
+<script src="../js/brand.js"></script>
+
+
+</html>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <dubbo:protocol name="dubbo" port="20886">
+        <dubbo:parameter key="qos.enable" value="true" />
+        <dubbo:parameter key="qos.accept.foreign.ip" value="false" />
+        <dubbo:parameter key="qos.port" value="7777" />
+    </dubbo:protocol>
+    <dubbo:application name="fmstore-page-service"/>
+    <dubbo:annotation package="com.fmjava.core.service" />
+
+    <bean id="freemarkerConfig"
+          class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <!-- 配置模板所在目录位置 -->
+        <property name="templateLoaderPath" value="/WEB-INF/ftl/" />
+        <!-- 配置模板文件默认字符集 -->
+        <property name="defaultEncoding" value="UTF-8" />
+    </bean>
+
+</beans>

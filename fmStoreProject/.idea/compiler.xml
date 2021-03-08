@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="interface" />
+        <module name="service_search" />
+        <module name="web_shop" />
+        <module name="common" />
+        <module name="web_manegement" />
+        <module name="service_sellerGoods" />
+        <module name="web_portal" />
+        <module name="dao" />
+        <module name="solr_util" />
+        <module name="service_page" />
+        <module name="pojo" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="service_user" target="1.7" />
+      <module name="web_user" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

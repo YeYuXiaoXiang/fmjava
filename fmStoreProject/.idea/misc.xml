@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/service_page" />
+    <file type="web" url="file://$PROJECT_DIR$/service_search" />
+    <file type="web" url="file://$PROJECT_DIR$/service_sellerGoods" />
+    <file type="web" url="file://$PROJECT_DIR$/service_user" />
+    <file type="web" url="file://$PROJECT_DIR$/web_manegement" />
+    <file type="web" url="file://$PROJECT_DIR$/web_portal" />
+    <file type="web" url="file://$PROJECT_DIR$/web_shop" />
+    <file type="web" url="file://$PROJECT_DIR$/web_user" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+      </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/service_user/pom.xml" />
+        <option value="$PROJECT_DIR$/web_user/pom.xml" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>
